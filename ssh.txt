@@ -1,0 +1,14 @@
+SHA256:2oaAgpWhxQCfU588WW8RWIyiHx1I5+V0Bs0x9RCM9ZA omer.firat@softtech.com.tr
+The key's randomart image is:
++--[ED25519 256]--+
+|+oo ....o=B==**o |
+| +.= oo*+=.++.E= |
+|. *  .*o..+     o|
+|.. o. ....       |
+|o . .. .S        |
+| .   ..+         |
+|      o o        |
+|       .         |
+|                 |
++----[SHA256]-----+
+
