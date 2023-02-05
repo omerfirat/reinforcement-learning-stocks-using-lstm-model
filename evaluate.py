@@ -71,7 +71,7 @@ while portfolio_return == 0: # a hack to avoid stationary case
         previous_portfolio_value = len(agent.inventory) * stock_prices[t] + agent.balance
         
         # execute position
-        logging.info(f'Step: {t}')
+        logging.info(f'Step: {t} action: {action} agent inventory: {len(agent.inventory)}')
         if action != np.argmax(actions): logging.info(f"\t\t'{action_dict[action]}' is an exploration.")
         if action == 0: hold() # hold
         if action == 1 and agent.balance > stock_prices[t]: buy(t) # buy

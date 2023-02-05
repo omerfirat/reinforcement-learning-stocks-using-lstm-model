@@ -8,7 +8,7 @@ from utils import *
 
 
 parser = argparse.ArgumentParser(description='command line options')
-parser.add_argument('--model_name', action="store", dest="model_name", default='LSTM', help="model name")
+parser.add_argument('--model_name', action="store", dest="model_name", default='LSTM_64_64', help="model name")
 parser.add_argument('--stock_name', action="store", dest="stock_name", default='^GSPC_2010-2015', help="stock name")
 parser.add_argument('--window_size', action="store", dest="window_size", default=10, type=int, help="span (days) of observation")
 parser.add_argument('--num_episode', action="store", dest="num_episode", default=10, type=int, help='episode number')
@@ -55,6 +55,17 @@ def sell(t):
         global reward
         reward = profit
         return 'Sell: ${:.2f} | Profit: ${:.2f}'.format(stock_prices[t], profit)
+
+
+# Check current handlers
+#print(logging.root.handlers)
+# [<StreamHandler stderr (NOTSET)>]
+
+# Remove all handlers associated with the root logger object.
+for handler in logging.root.handlers[:]:
+    logging.root.removeHandler(handler)
+#print(logging.root.handlers)
+# []
 
 # configure logging
 logging.basicConfig(filename=f'logs/{model_name}_training_{stock_name}.log', filemode='w',
@@ -138,8 +149,8 @@ for e in range(1, num_episode + 1):
     if e % 5 == 0:
         if model_name == 'DQN':
             agent.model.save('saved_models/DQN_ep' + str(e) + '.h5')
-        if model_name == 'LSTM':
-            agent.model.save('saved_models/LSTM_ep' + str(e) + '.h5')
+        if model_name == 'LSTM_64_64':
+            agent.model.save('saved_models/LSTM_64_64_ep' + str(e) + '.h5')
         elif model_name == 'DDPG':
             agent.actor.model.save_weights('saved_models/DDPG_ep{}_actor.h5'.format(str(e)))
             agent.critic.model.save_weights('saved_models/DDPG_ep{}_critic.h5'.format(str(e)))
