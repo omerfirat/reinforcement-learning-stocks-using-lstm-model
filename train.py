@@ -8,7 +8,7 @@ from utils import *
 
 
 parser = argparse.ArgumentParser(description='command line options')
-parser.add_argument('--model_name', action="store", dest="model_name", default='LSTM_64_64', help="model name")
+parser.add_argument('--model_name', action="store", dest="model_name", default='LSTM_128_64', help="model name")
 parser.add_argument('--stock_name', action="store", dest="stock_name", default='^GSPC_2010-2015', help="stock name")
 parser.add_argument('--window_size', action="store", dest="window_size", default=10, type=int, help="span (days) of observation")
 parser.add_argument('--num_episode', action="store", dest="num_episode", default=10, type=int, help='episode number')
