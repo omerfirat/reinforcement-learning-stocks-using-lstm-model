@@ -9,7 +9,7 @@ from utils import *
 
 parser = argparse.ArgumentParser(description='command line options')
 parser.add_argument('--model_name', action="store", dest="model_name", default='LSTM_128_64', help="model name")
-parser.add_argument('--stock_name', action="store", dest="stock_name", default='^GSPC_2010-2015', help="stock name")
+parser.add_argument('--stock_name', action="store", dest="stock_name", default='ISMEN.IS_2017-2022', help="stock name")
 parser.add_argument('--window_size', action="store", dest="window_size", default=10, type=int, help="span (days) of observation")
 parser.add_argument('--num_episode', action="store", dest="num_episode", default=10, type=int, help='episode number')
 parser.add_argument('--initial_balance', action="store", dest="initial_balance", default=50000, type=int, help='initial balance')
@@ -149,8 +149,8 @@ for e in range(1, num_episode + 1):
     if e % 5 == 0:
         if model_name == 'DQN':
             agent.model.save('saved_models/DQN_ep' + str(e) + '.h5')
-        if model_name == 'LSTM_64_64':
-            agent.model.save('saved_models/LSTM_64_64_ep' + str(e) + '.h5')
+        if model_name == 'LSTM_128_64':
+            agent.model.save('saved_models/LSTM_128_64_ep' + str(e) + '.h5')
         elif model_name == 'DDPG':
             agent.actor.model.save_weights('saved_models/DDPG_ep{}_actor.h5'.format(str(e)))
             agent.critic.model.save_weights('saved_models/DDPG_ep{}_critic.h5'.format(str(e)))
